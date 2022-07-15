@@ -7,7 +7,8 @@ This is a command-line program that will render one of six sample scenes from th
 Additionally, this implementation of the raytracer uses Python's ProcessPoolExecutor from the 
 [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html?highlight=concurrent%20futures#module-concurrent.futures) 
 library to help speed-up rendering. By default, it will use **half** of the detectable CPU cores on your system. This
-is so that it doesn't peg all your core to 100%. This can be overridden via the `-c` command line switch (see below).
+is so that it doesn't peg all your cores at 100%. This behaviour can be overridden via the `-c` command 
+line switch (see below).
 
 
 The final rendered images are saved in the [ppm](http://ailab.eecs.wsu.edu/wise/P1/PPM.html) image format. 
