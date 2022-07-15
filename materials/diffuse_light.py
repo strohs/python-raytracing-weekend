@@ -7,6 +7,9 @@ from textures import Texture
 
 @dataclass
 class DiffuseLight(Material):
+    """
+    A material that simulates a diffuse light by emitting its texture's color value
+    """
     emit: Texture
 
     def scatter(self, r_in: Ray, p: Point3, normal: Vec3, t: float, u: float, v: float,

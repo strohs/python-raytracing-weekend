@@ -1,10 +1,8 @@
 import math
-from typing import List
+
 from PIL import Image
 import numpy as np
 import numpy.typing as npt
-
-import common
 
 NDArrayObject = npt.NDArray[object]
 NDArrayFloat = npt.NDArray[np.float_]
@@ -35,30 +33,16 @@ def degrees_to_radians(degrees: float) -> float:
     return degrees * math.pi / 180.0
 
 
-def save_as_png_image(filename: str, data: List[common.ColorRgb], width: int, height: int):
+def save_as_png_image(filename: str, data: NDArrayFloat):
     """
     saves a List of ColorRgb objects as a PNG image
     :param filename: the file name to save the image under
     :param data: color data of the image, in row-order, from top left to bottom right
-    :param width: the width of the saved image
-    :param height: the height of the saved image
     :return:
     """
-
-    # convert ColorRgb data to a sequence of ints
-    # then call bytes() to turn that sequence into an immutable sequence of bytes...
-    # because this is what the PIL.Image.frombytes() method expects
-
-    byte_list = []
-    for color in data:
-        byte_list.append(int(color.r))
-        byte_list.append(int(color.g))
-        byte_list.append(int(color.b))
-
-    byte_arr = bytes(byte_list)
-    size = (width, height)
+    bytes_arr = data.astype(np.ubyte)
     try:
-        image = Image.frombytes("RGB", size, byte_arr)
+        image = Image.fromarray(bytes_arr, mode="RGB")
         image.save(filename, "PNG")
     except ValueError as err:
         print(f"ValueError during image save with {filename}  {err=}")

@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
-from common import Point3, ColorRgb, clamp
+from common import Point3, ColorRgb
 from textures import Texture, Perlin
 
 

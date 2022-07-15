@@ -9,7 +9,8 @@ from textures import Texture
 @dataclass
 class Isotropic(Material):
     """
-    An Isotropic material has properties that are identical in all directions
+    An Isotropic material has properties that are identical in all directions, like a fog, mist, or smoke
+    like material
     """
     albedo: Texture
 

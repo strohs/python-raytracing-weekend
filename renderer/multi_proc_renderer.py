@@ -51,17 +51,18 @@ class MultiprocessRenderer:
             # futures will hold completed render jobs
             futures = []
 
-            # stores the final R,G,B color data of each pixel in a height x width x 3 ndarray
+            # stores the final R,G,B color data of each pixel in a height x width x 3 numpy ndarray
             colors = np.empty((camera.image_height, camera.image_width, 3), dtype=np.float_)
 
-            # iterate over row indices and submit a row to the executor
+            # submit each row of the image to the executor
             for row_idx in range(camera.image_height):
                 futures.append(
                     executor.submit(self.render_scanline, row_idx, world_bvh, camera)
                 )
 
-            print(f"submitted {camera.image_height:04d} rows to the process pool for rendering...")
+            print(f"submitted {camera.image_height:4d} rows to the process pool for rendering...")
 
+            # wait for each row to complete and store the results in the color array
             for fut in concurrent.futures.as_completed(futures):
                 row_start, row_colors = fut.result()
                 colors[row_start] = row_colors
@@ -102,8 +103,8 @@ class MultiprocessRenderer:
 
     def ray_color(self, ray: Ray, world: Hittable, depth: int) -> ColorRgb:
         """
-        determines if a Ray has hit a `Hittable` object in the `world` and computes the overall pixel color
-        of the given Ray. The Hittable's `Material` is taken into account when performing ray bouncing
+        determines if a Ray has hit a `Hittable` object in the `world` and computes the overall color
+        of the Ray. The Hittable's `Material` is taken into account when performing ray bouncing
         (up to `depth` times) in order to get an accurate color determination. If nothing
         was hit then the `background` color is returned
 

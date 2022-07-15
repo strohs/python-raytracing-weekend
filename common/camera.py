@@ -14,8 +14,9 @@ class Camera:
     """
     A positionable `Virtual Camera` with a configurable vertical field of view, aperture,
     focus distance and shutter open/close time.
-    All `Ray`s in this ray-tracer originate from the `Camera` via calls to its `get_ray(s,t)`
+    All `Ray`s in this ray-tracer originate from a `Camera` via calls to its `get_ray(s,t)`
     function.
+
     Use the CameraBuilder class to build an instance of Camera
     """
     image_width: int
@@ -59,7 +60,7 @@ class Camera:
 class CameraBuilder:
     """
     A Builder class for constructing a Camera.
-    Call all the provided methods and then lastly call the build() method to build a camera object
+    Call all the provided methods and then lastly call the build() method to build a Camera object
     """
 
     def __init__(self):

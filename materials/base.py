@@ -5,7 +5,6 @@ import math
 from dataclasses import dataclass
 
 from common import Vec3, Point3, Ray, ColorRgb
-import materials
 
 
 @dataclass

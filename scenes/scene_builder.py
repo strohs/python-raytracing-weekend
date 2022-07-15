@@ -1,5 +1,5 @@
 """
-Functions for generating a camera and a list of hittable primitives that make up one of the
+Functions for building a camera and a list of hittable primitives that make up one of the
 pre-built scenes from the Raytracing in a Weekend series of books.
 """
 import random
@@ -11,7 +11,7 @@ from hittables.primitives import Sphere, XZRect, YZRect, XYRect, BoxInst, Moving
 from hittables.translate import Translate
 from hittables.volumes import ConstantMedium
 from materials import Lambertian, Dielectric, Metal
-from materials.diffues_light import DiffuseLight
+from materials.diffuse_light import DiffuseLight
 from renderer import BackgroundType, LinearInterpBackground, SolidBackground
 from textures import SolidColor, ImageTexture, NoiseTexture
 from textures.checker_texture import CheckerTexture
@@ -187,6 +187,13 @@ def build_scene_two_perlin_spheres(image_width: int, aspect_ratio: float) -> (Ca
 
 
 def build_scene_two_checkered_spheres(image_width: int, aspect_ratio: float) -> (Camera, HittableList, BackgroundType):
+    """
+    builds a scene with two checkered spheres on top of each other. The top sphere has a grey checkerboard pattern
+    and the bottom sphere has a green checker pattern
+    :param image_width:
+    :param aspect_ratio:
+    :return:
+    """
     look_from_point = Point3(13.0, 2.0, 3.0)
     look_at_point = Point3(0.0, 0.0, 0.0)
     up_dir = Vec3(0.0, 1.0, 0.0)
@@ -232,6 +239,12 @@ def build_scene_two_checkered_spheres(image_width: int, aspect_ratio: float) -> 
 
 
 def build_scene_random_spheres(image_width: int, aspect_ratio: float) -> (Camera, HittableList, BackgroundType):
+    """
+    builds a scene consisting of 484 random spheres above a gigantic checkerboard sphere
+    :param image_width:
+    :param aspect_ratio:
+    :return:
+    """
     camera = CameraBuilder() \
         .look_from(Point3(13.0, 2.0, 3.0)) \
         .look_at(Point3(0.0, 0.0, 0.0)) \

@@ -3,7 +3,7 @@ from enum import Enum
 
 class Scene(Enum):
     """
-    Enumeration of the pre-built scenes that the raytracer can generate
+    Enumeration of the pre-built scenes from the first two books of "Raytracing in a Weekend"
     """
     RANDOM_SPHERES = 1
     PERLIN_SPHERES = 2

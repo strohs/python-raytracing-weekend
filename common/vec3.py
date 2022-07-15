@@ -9,6 +9,12 @@ import random
 
 @dataclass
 class Vec3:
+    """
+    Vec3 is the main mathematical class of the raytracer.
+    It holds data about points, vectors, and colors in the 3D scene.
+    The `Point3` and `ColorRgb` types alias Vec3 since they all share
+    most of the same functionality.
+    """
     x: float
     y: float
     z: float
@@ -17,6 +23,29 @@ class Vec3:
         self.x = x
         self.y = y
         self.z = z
+
+    # r,g,b are convenience getters for the ColorRgb type to make it clearer that
+    # we are getting R,G,B color values instead of x,y,z coordinates. Ideally, if we
+    # wanted to use Solid Object-Oriented principles, we would create an Abstract Base
+    # Class and inherit from that; however, the book uses the design implemented here,
+    # and its fast and easy.
+    @property
+    def r(self):
+        return self.x
+
+    @property
+    def g(self):
+        return self.y
+
+    @property
+    def b(self):
+        return self.z
+
+    def to_tuple(self) -> (float, float, float):
+        """
+        returns the x,y,z values of this Vec3 as a tuple: (x,y,z)
+        """
+        return self.x, self.y, self.z
 
     def cross(self, other: Vec3) -> Vec3:
         """
@@ -298,3 +327,4 @@ class Vec3:
 
 # Point3 piggybacking on top of Vec3. Mainly we use its x,y,z coordinates
 Point3 = Vec3
+ColorRgb = Vec3
