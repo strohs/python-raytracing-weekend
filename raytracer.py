@@ -11,7 +11,8 @@ from scenes import Scene
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='Generates a raytraced scene from the book "Raytracing in a Weekend"',
+        description='renders one of six raytraced scenes from the book "Raytracing in a Weekend", and saves it '
+                    'as a .PPM image file',
         epilog="""The Scene numbers are as follows:
         1 = Random Spheres,
         2 = Two Perlin Spheres,
