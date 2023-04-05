@@ -1,4 +1,4 @@
-# Raytracing in a Weekend Raytracer
+# Python Raytracing in a Weekend
 A Python implementation of my [Rust raytracer](https://github.com/strohs/raytracer), inspired by the first two books 
 of [Ray Tracing in One Weekend](https://raytracing.github.io/).
 
